@@ -1,13 +1,21 @@
 import cx from "classix";
 import { Button } from "@app/components/button";
 
+export interface CardProps {
+  title: string;
+  description: string;
+  buttonLabel: string;
+  onButtonClick: () => void;
+  className?: string;
+}
+
 export const Card = ({
   title,
   description,
   buttonLabel,
   onButtonClick,
   className,
-}: Props): JSX.Element => {
+}: CardProps): JSX.Element => {
   return (
     <div
       className={cx(
@@ -15,8 +23,8 @@ export const Card = ({
         className
       )}
     >
-      <h2 className="text-lg font-primary-bold text-font">{title}</h2>
-      <p className="text-sm font-primary-light text-font-subtle">
+      <h2 className="font-primary-bold text-lg text-font">{title}</h2>
+      <p className="font-primary-light text-sm text-font-subtle">
         {description}
       </p>
       <Button
@@ -30,11 +38,3 @@ export const Card = ({
     </div>
   );
 };
-
-export interface Props {
-  title: string;
-  description: string;
-  buttonLabel: string;
-  onButtonClick: () => void;
-  className?: string;
-}
